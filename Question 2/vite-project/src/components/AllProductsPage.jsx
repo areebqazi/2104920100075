@@ -43,7 +43,7 @@ function AllProductsPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-8 py-8">
       <h2 className="text-3xl font-bold mb-4">All Products</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product) => (
@@ -54,15 +54,15 @@ function AllProductsPage() {
               className="w-full h-48 object-cover"
             />
             <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2">{product.name}</h3>
+              <p className="text-lg font-semibold mb-2">{product.productName}</p>
               <p className="text-gray-600 mb-2">{product.company}</p>
               <p className="text-gray-600 mb-2">{product.category}</p>
-              <p className="text-gray-700 font-bold mb-2">{product.price}</p>
-              <div className="flex items-center">
-                <span className="text-yellow-500">{product.rating}</span>
-                <span className="ml-2">{product.discount}</span>
-                <span className="ml-auto">{product.availability}</span>
+              <p className="text-gray-700 font-bold mb-2">Price - {product.price}</p>
+              <div className="flex items-center justify-between">
+                <span className="text-yellow-500">Rating - {product.rating}</span>
+                <span className="ml-2">Discount - {product.discount}%</span>
               </div>
+                <span className="ml-auto">Availaibilty - {product.availability}</span>
             </div>
           </div>
         ))}
