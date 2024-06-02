@@ -72,7 +72,7 @@ router.get("/:categoryname/products", async (req, res) => {
       paginatedProducts = paginatedProducts.slice(startIndex, endIndex);
     }
 
-    res.send(paginatedProducts);
+    res.json(paginatedProducts);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error Fetching Products");
@@ -95,7 +95,7 @@ router.get("/:categoryname/products/:productid", async (req, res) => {
     if (!product) {
       return res.status(404).send("Product not found");
     }
-    res.send(product);
+    res.json(product);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error Fetching Product Details");
