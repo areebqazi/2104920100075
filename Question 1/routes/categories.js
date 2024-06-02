@@ -16,11 +16,10 @@ const generateProductId = (company, category, product) => {
 // Function to fetch the products from the main API
 const fetchProducts = async (category, n, minPrice, maxPrice) => {
   let products = [];
-//   for (const company of COMPANIES) {
+  for (const company of COMPANIES) {
     const company = 'AMZ'
     try {
         const url = `${API_BASE_URL}/${company}/categories/${category}/products`;
-        console.log(url);
       const response = await axios.get(
         url,
         {
@@ -44,7 +43,7 @@ const fetchProducts = async (category, n, minPrice, maxPrice) => {
     } catch (error) {
       console.error(`Error fetching products for company ${company}:`, error);
     }
-//   }
+  }
   return products;
 };
 
