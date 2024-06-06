@@ -16,8 +16,7 @@ const generateProductId = (company, category, product) => {
 // Function to fetch the products from the main API
 const fetchProducts = async (category, n, minPrice, maxPrice) => {
   let products = [];
-  for (const company of COMPANIES) {
-    const company = 'AMZ'
+  for (let company of COMPANIES) {
     try {
         const url = `${API_BASE_URL}/${company}/categories/${category}/products`;
       const response = await axios.get(
@@ -72,7 +71,7 @@ router.get("/:categoryname/products", async (req, res) => {
       paginatedProducts = paginatedProducts.slice(startIndex, endIndex);
     }
 
-    res.json(paginatedProducts);
+    res.status(200).json(paginatedProducts);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error Fetching Products");
@@ -95,7 +94,7 @@ router.get("/:categoryname/products/:productid", async (req, res) => {
     if (!product) {
       return res.status(404).send("Product not found");
     }
-    res.json(product);
+    res.status(200).json(product);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error Fetching Product Details");
